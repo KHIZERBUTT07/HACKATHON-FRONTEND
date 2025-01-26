@@ -33,7 +33,7 @@ const Signup = () => {
     try {
       // Step 1: Send the signup data to the backend (without image)
       const response = await fetch(
-        "https://hackathon-backend-production-c28e.up.railway.app/api/auth/register",
+        "https://hackathon-backend-cqxr.onrender.com/api/auth/register",
         {
           method: "POST",
           headers: {
