@@ -1,7 +1,201 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* Global Styles */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f9f9f9; /* Light background color */
+  color: #333; /* Primary text color */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  box-sizing: border-box;
+  text-decoration: none;
+}
 
+/* Links */
+a {
+  color: #007bff; /* Light blue */
+  text-decoration: none;
+}
 
+a:hover {
+  color: #0056b3; /* Dark blue for the text color on hover */
+}
+.a {
+  text-decoration: none;
+}
+/* Paragraph */
+p {
+  font-size: 1rem; /* Default size */
+  margin: 1rem 0;
+  color: #444;
+}
 
+/* Headings with Responsive Sizes */
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+  margin-bottom: 1rem;
+  color: #222;
+}
+h2 {
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  margin-bottom: 0.9rem;
+  color: #333;
+}
+h3 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 0.8rem;
+  color: #444;
+}
+h4 {
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  margin-bottom: 0.7rem;
+  color: #555;
+}
+h5 {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: 0.6rem;
+  color: #666;
+}
+h6 {
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+  margin-bottom: 0.5rem;
+  color: #777;
+}
+
+button {
+  font-weight: 600; /* Equivalent to font-semibold */
+  max-width: 320px;
+  letter-spacing: 0.05em; /* Equivalent to tracking-wide */
+  background-color: #6366f1; /* Indigo-500 */
+  color: #f9fafb; /* Gray-100 */
+  width: 100%; /* Full width */
+  padding: 1rem; /* Equivalent to py-4 */
+  border-radius: 0.5rem; /* Rounded-lg */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out; /* Smooth hover/focus transitions */
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4f46e5; /* Indigo-700 */
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(99, 102, 241, 0.6); /* Focus shadow effect */
+}
+
+button.secondary {
+  background-color: #6c757d; /* Gray */
+  color: #fff;
+}
+button.secondary:hover {
+  background-color: #5a6268;
+}
+/* Green Button */
+button.success {
+  background-color: #28a745; /* Green */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.success:hover {
+  background-color: #218838; /* Darker Green */
+}
+
+/* Yellow Button */
+button.warning {
+  background-color: #ffc107; /* Yellow */
+  color: #212529; /* Dark text for contrast */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.warning:hover {
+  background-color: #e0a800; /* Darker Yellow */
+}
+
+/* Red Button */
+button.danger {
+  background-color: #dc3545; /* Red */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.danger:hover {
+  background-color: #c82333; /* Darker Red */
+}
+
+/* Input Fields */
+input,
+textarea {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  margin-bottom: 1rem;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Lists */
+ul {
+  padding-left: 1.5rem;
+}
+ol {
+  padding-left: 1.5rem;
+}
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* Containers */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Lightbox/Sections */
+.section {
+  background-color: #fff;
+  padding: 2rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  p {
+    font-size: 0.9rem;
+  }
+}

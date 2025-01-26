@@ -1,33 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from './page/login'
-import Signup from './page/signup'
-import Home from './page/home'
-import Slip from './page/Slip'
-import DepartmentManger from './page/DepartmentManager'
-import AdminPanel from './page/AdminPanel'
+// src/App.jsx
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import Navbar from "./components/Navbar";
+import Home from "./pages/User/Home";
+import Login from "./pages/User/Login"
+import Signup from "./pages/User/Signup"
+import { useAuth } from "./context/AuthContext";
+import QrCode from "./pages/User/QrCode";
+import Dashboard from "./pages/Admin/Dashboard";
 
-function App() {
-  // const [count, setCount] = useState(0)
+const App = () => {
+  const { user } = useAuth();
 
   return (
-    <>
-     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='/signup' element={<Signup></Signup>}></Route>
-        <Route path='adminpanel' element={<AdminPanel></AdminPanel>}></Route>
-        <Route path='slip/:token' element={<Slip></Slip>}></Route>
-        <Route path='/department-manger' element={<DepartmentManger></DepartmentManger>}></Route>
-      </Routes>
-     
-     </BrowserRouter>
-    </>
-  )
-}
+    <Router>
+      {/* <Navbar /> */}
+      <div>
+        <Routes>
+          <Route
+            path="/"
+            element={<Home/>}
+          />
+          {/* Add a route for '/' */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/qr-code" element={<QrCode />} />
+          {user && (
+            <Route
+            path="/profile"
+            element={<div>Welcome {user.name}, your profile page</div>}
+            />
+          )}
+          {/* admin */}
+          <Route path="/admin" element={<Dashboard />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
-export default App
+export default App;
