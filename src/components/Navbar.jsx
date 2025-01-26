@@ -1,27 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
-
   return (
-    <nav>
-      <div className="navbar">
-        {!user ? (
-          <div>
-            <Link to="/login">Login</Link> | <Link to="/signup">Signup</Link>
-          </div>
-        ) : (
-          <div>
-            <img
-              src={`https://avatars.dicebear.com/api/initials/${user.name}.svg`}
-              alt="Avatar"
-              style={{ width: 40, height: 40, borderRadius: '50%' }}
-            />
-            <button onClick={logout}>Logout</button>
-          </div>
-        )}
+    <nav className="bg-black text-white py-4 shadow-lg">
+      <div className="container mx-auto flex justify-between items-center px-6">
+        {/* Logo or App Name */}
+        <Link to="/" className="text-2xl font-bold hover:text-gray-300">
+          MyApp
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="space-x-6 text-lg">
+          <Link
+            to="/"
+            className="hover:text-gray-400 transition duration-200 ease-in-out"
+          >
+            Home
+          </Link>
+          <Link
+            to="/signup"
+            className="hover:text-gray-400 transition duration-200 ease-in-out"
+          >
+            Signup
+          </Link>
+          <Link
+            to="/login"
+            className="hover:text-gray-400 transition duration-200 ease-in-out"
+          >
+            Login
+          </Link>
+          <Link
+            to="/admin"
+            className="hover:text-gray-400 transition duration-200 ease-in-out"
+          >
+            Admin
+          </Link>
+        </div>
       </div>
     </nav>
   );

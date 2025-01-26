@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [cnic, setCnic] = useState("");
-  const [userId, setUserId] = useState(localStorage.getItem("userId") || ""); // Preload userId from localStorage
+  const [userId, setUserId] = useState(localStorage.getItem("userId") || "");
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -18,9 +18,7 @@ const Login = () => {
         "https://hackathon-backend-cqxr.onrender.com/api/auth/login",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(loginData),
         }
       );
@@ -31,15 +29,15 @@ const Login = () => {
         navigate("/qr-code");
       } else {
         const errorData = await response.json();
-        console.error("Login failed:", errorData);
+        alert(errorData.message || "Login failed.");
       }
     } catch (error) {
-      console.error("Error:", error);
+      alert("An error occurred. Please try again.");
     }
   };
 
   return (
-    <div className="h-screen bg-gradient-to-r from-[#0D6Db7] to-[#8DC63f] flex items-center justify-center px-2">
+    <div className="min-h-screen flex items-center justify-center px-2">
       <div className="w-full max-w-md bg-white shadow-xl rounded-lg p-6">
         <h1 className="text-xl font-bold text-gray-800 text-center">Login</h1>
         <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
