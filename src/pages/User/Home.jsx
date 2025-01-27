@@ -36,13 +36,13 @@ const Home = () => {
               Admin Login
             </Link>
             <Link
-              to="/receptionist-login"
+              to="/receptionist-dashboard"
               className="bg-black text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-600 hover:scale-105 transition-transform duration-300 text-center"
             >
               Login as Receptionist
             </Link>
             <Link
-              to="/department-login"
+              to="/department-dashboard"
               className="bg-black text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-600 hover:scale-105 transition-transform duration-300 text-center"
             >
               Login as Department
