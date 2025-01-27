@@ -10,22 +10,26 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gradient-to-r from-blue-700 to-blue-500 py-2 shadow-lg relative font-inter">
-      <div className="container  flex justify-between items-center ">
-        {/* Logo or App Name */}
-        <a
-          href="/"
-          className="bg-black text-blue-600 px-4 sm:px-6 md:px-10 py-2 rounded-[20px] 
-          text-sm sm:text-base md:text-lg lg:text-2xl 
-          font-bold hover:bg-gray-100 hover:text-blue-700 
-          transition duration-200 ease-in-out mr-auto sm:mr-4"
-        >
-          BENEFICIARY APP
-        </a>
+      <div className="container mx-auto flex justify-between items-center px-3">
+        {/* Logo Only */}
+        <div className="flex items-center">
+          <a href="/" className="flex items-center">
+            <div
+              className="bg-black flex justify-center items-center rounded-[20px] p-2"
+            >
+              <img
+                src="/logo.png"
+                alt="Logo"
+                className="h-30 w-30 object-contain"
+              />
+            </div>
+          </a>
+        </div>
 
         {/* Hamburger Menu for Mobile */}
         <div className="md:hidden">
-          <button 
-            onClick={toggleMenu} 
+          <button
+            onClick={toggleMenu}
             className="text-white focus:outline-none"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

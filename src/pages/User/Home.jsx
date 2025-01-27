@@ -47,6 +47,13 @@ const Home = () => {
             >
               Login as Department
             </Link>
+            {/* Stay On Home Button */}
+            <Link
+              to="/"
+              className="bg-black text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-600 hover:scale-105 transition-transform duration-300 text-center"
+            >
+              Stay On Home
+            </Link>
           </div>
         </div>
 

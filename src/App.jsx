@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <div className="container mx-auto mt-8">
+      <div className="mt-8">
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
