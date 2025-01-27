@@ -7,9 +7,9 @@ const ReceptionistDashboard = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [purpose, setPurpose] = useState("");
-  const [token, setToken] = useState("");
   const [beneficiaries, setBeneficiaries] = useState([]);
 
+  // Load beneficiaries from the mock API when the component mounts
   useEffect(() => {
     const loadBeneficiaries = async () => {
       const data = await fetchBeneficiaries();
@@ -21,6 +21,7 @@ const ReceptionistDashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Generate a unique token for the new beneficiary
     const generatedToken = `TOKEN-${Math.floor(Math.random() * 100000)}`;
     const newBeneficiary = {
       id: Math.random().toString(36).substr(2, 9),
@@ -30,12 +31,17 @@ const ReceptionistDashboard = () => {
       address,
       purpose,
       token: generatedToken,
+      status: "Pending",
     };
 
+    // Save the new beneficiary to the mock backend
     await registerBeneficiary(newBeneficiary);
-    setBeneficiaries((prev) => [...prev, newBeneficiary]);
-    setToken(generatedToken);
 
+    // Fetch the updated list of beneficiaries
+    const updatedBeneficiaries = await fetchBeneficiaries();
+    setBeneficiaries(updatedBeneficiaries);
+
+    // Clear the form
     setName("");
     setCnic("");
     setPhone("");
@@ -47,16 +53,11 @@ const ReceptionistDashboard = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">
-        Receptionist Dashboard
-      </h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Receptionist Dashboard</h1>
 
       {/* Registration Form */}
-      <form
-        className="bg-white shadow-md rounded-lg p-6 mb-6"
-        onSubmit={handleSubmit}
-      >
-        <h2 className="text-xl font-semibold mb-4">Register a Beneficiary</h2>
+      <form className="bg-white shadow-md rounded-lg p-6 mb-6" onSubmit={handleSubmit}>
+        <h2 className="text-xl font-semibold mb-4">Register a New Beneficiary</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
@@ -94,7 +95,7 @@ const ReceptionistDashboard = () => {
             type="text"
             value={purpose}
             onChange={(e) => setPurpose(e.target.value)}
-            placeholder="Purpose of Visit"
+            placeholder="Purpose"
             className="w-full px-4 py-2 border rounded-md"
             required
           />
@@ -103,7 +104,7 @@ const ReceptionistDashboard = () => {
           type="submit"
           className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
         >
-          Register
+          Register Beneficiary
         </button>
       </form>
 
@@ -119,6 +120,7 @@ const ReceptionistDashboard = () => {
                 <th className="p-2">Name</th>
                 <th className="p-2">CNIC</th>
                 <th className="p-2">Phone</th>
+                <th className="p-2">Address</th>
                 <th className="p-2">Purpose</th>
                 <th className="p-2">Token</th>
               </tr>
@@ -129,10 +131,9 @@ const ReceptionistDashboard = () => {
                   <td className="p-2">{beneficiary.name}</td>
                   <td className="p-2">{beneficiary.cnic}</td>
                   <td className="p-2">{beneficiary.phone}</td>
+                  <td className="p-2">{beneficiary.address}</td>
                   <td className="p-2">{beneficiary.purpose}</td>
-                  <td className="p-2 font-bold text-blue-600">
-                    {beneficiary.token}
-                  </td>
+                  <td className="p-2 font-bold text-blue-600">{beneficiary.token}</td>
                 </tr>
               ))}
             </tbody>

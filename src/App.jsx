@@ -7,6 +7,7 @@ import Signup from "./pages/User/Signup";
 import Dashboard from "./pages/Admin/Dashboard";
 import LoginAsAdmin from "./pages/Admin/LoginAsAdmin";
 import ReceptionistDashboard from "./pages/User/ReceptionistDashboard"; // Import Receptionist Dashboard
+import DepartmentDashboard from "./pages/User/DepartmentDashboard"; // Import Department Dashboard
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
@@ -44,6 +45,12 @@ const App = () => {
           <Route
             path="/receptionist-dashboard"
             element={<ReceptionistDashboard />}
+          />
+
+          {/* Department Dashboard Route */}
+          <Route
+            path="/department-dashboard"
+            element={<DepartmentDashboard />}
           />
         </Routes>
       </div>
